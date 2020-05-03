@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class = "w3-display-container">
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel = "stylesheet" href = "wb.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<h1>The Whiteboard Application</h1>
+
+<canvas id = "myPics"></canvas>
+<div class="btn-group">
+    <button id = "black" class = "w3-black button">  </button> 
+    <button id = "blue" class = "buttonblue">  </button>
+    <button id = "red"  class = "buttonred">  </button>
+    <button id = "green"  class = "buttongreen">  </button>
+    <button id = "pink" class = "buttonpink">  </button>
+    <button id = "purple" class = "buttonpurple">  </button>
+    <button id = "orange" class = "buttonorange">  </button>
+    <button id = "yellow" class = "buttonyellow">  </button>
+    <button id = "brown" class = "buttonbrown">  </button>
+</div>
+<button id = "eraser" class = "eraser"><i class="fa fa-eraser"></i></button>
+<button id="clear" class="btn"><i class="fa fa-trash"></i></button>
+<button onclick="download_image()" class = "downloadbutton"><i class="material-icons">file_download</i></button>
+<script type = text/javascript>
+var isDrawing = false;
+var x = 0;
+var y = 0;
+var color = "black";
+var brushsize = 2;
+const myPics = document.getElementById('myPics');
+const context = myPics.getContext('2d');
+myPics.width  = window.innerWidth;
+myPics.height = window.innerHeight - 150;
+const rect = myPics.getBoundingClientRect();
+
+myPics.addEventListener('mousedown', e => {
+  x = e.clientX - rect.left;
+  y = e.clientY - rect.top;
+  isDrawing = true;
+});
+
+myPics.addEventListener('mousemove', e => {
+  if (isDrawing === true) {
+    drawLine(context, x, y, e.clientX - rect.left, e.clientY - rect.top);
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+  }
+});
+
+window.addEventListener('mouseup', e => {
+  if (isDrawing === true) {
+    drawLine(context, x, y, e.clientX - rect.left, e.clientY - rect.top);
+    x = 0;
+    y = 0;
+    isDrawing = false;
+  }
+});
+document.getElementById("red").addEventListener("click", setColorToRed);
+function setColorToRed()
+    {
+        color = "#b00202";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("green").addEventListener("click", setColorToGreen);
+function setColorToGreen()
+    {
+        color = "#039908";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("blue").addEventListener("click", setColorToBlue);
+function setColorToBlue()
+    {
+        color = "blue";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("black").addEventListener("click", setColorToBlack);
+function setColorToBlack()
+    {
+        color = "black";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("pink").addEventListener("click", setColorToPink);
+function setColorToPink()
+    {
+        color = "#e063a9";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("purple").addEventListener("click", setColorToPurple);
+function setColorToPurple()
+    {
+        color = "#7842c9";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("orange").addEventListener("click", setColorToOrange);
+function setColorToOrange()
+    {
+        color = "#f27d00";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("yellow").addEventListener("click", setColorToYellow);
+function setColorToYellow()
+    {
+        color = "#ffc800";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("brown").addEventListener("click", setColorToBrown);
+function setColorToBrown()
+    {
+        color = "#b35644";
+        brushsize = 2;
+        document.getElementById("myPics").style.cursor = "crosshair";
+    }
+document.getElementById("clear").addEventListener("click", clear);
+    function clear()
+    {
+        context.clearRect(0,0, myPics.width, myPics.height);
+    }
+document.getElementById("eraser").addEventListener("click", erase);
+function erase()
+    {
+        color = "#ffffff";
+        brushsize = 10;
+        document.getElementById("myPics").style.cursor = "url('Editing-Eraser-icon.png'), help";
+    }
+function drawLine(context, x1, y1, x2, y2) {
+  context.beginPath();
+  context.strokeStyle = color;
+  context.lineWidth = brushsize;
+  context.moveTo(x1, y1);
+  context.lineTo(x2, y2);
+  context.stroke();
+  context.closePath();
+}
+/*var link = document.createElement('a');
+    link.innerHTML = 'download image';
+link.addEventListener('click', function(ev) {
+    link.href = canvas.toDataURL();
+    link.download = "mypainting.png";
+}, false);
+document.body.appendChild(link);*/
+function download_image() {
+    var canvas = document.getElementById("myPics");
+    image = canvas.toDataURL("image/jpg");
+    var link = document.createElement('a');
+    link.download = "my-image.jpg";
+    link.href = image;
+    link.click();
+  }
+    </script>
+</html>

@@ -1,0 +1,101 @@
+canvas {
+    border-style: solid;
+    border-color : #e6e6e6;
+    border-width: 2px 0px;
+    background-color: white;
+    cursor: crosshair;
+        }
+h1 {
+    padding : 3px 15px;
+    border : none;
+    font-family: 'Alegreya Sans';
+}
+html
+{
+    background-color: #f0f0f0;
+}
+.btn-group button{
+    border : none;
+    border-radius: 10px;
+    padding: 17px 17px;
+    cursor: pointer;
+    margin: 5px 5px;
+}
+.btn-group {
+    display: inline-block;
+    background-color: #f7f7f7;
+    padding: 5px 10px;
+    border-style: solid;
+    border-color : #e6e6e6;
+    border-width: 0px 2px;
+}
+.buttonblue {
+    background-color: blue;
+}
+.buttonred {
+    background-color: #b00202;
+}
+.buttongreen {
+    background-color: #039908;
+}
+.buttonpink {
+    background-color: #e063a9;
+}
+.buttonpurple {
+    background-color: #7842c9;
+}
+.buttonorange {
+    background-color: #f27d00;
+}
+.buttonyellow {
+    background-color: #ffc800;
+}
+.buttonbrown {
+    background-color: #b35644;
+}
+.btn {
+    position: relative;
+    display: inline-block;
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    cursor: pointer;
+    top: 6px;
+    margin: 0px 2px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+.btn:hover {
+    background-color: darkred;
+    transition: 0.7s;
+}
+.eraser
+{
+    position: relative;
+    top: 6px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 3px;
+    background-color: white;
+}
+.eraser:hover
+{
+    
+    transition: 0.7s;
+}
+.downloadbutton {
+    position: relative;
+    top: 6px;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    background-color: white;
+    float: right;
+    margin: 0px 10px;
+}
+.downloadbutton:hover
+{
+    
+    transition: 0.7s;
+}
